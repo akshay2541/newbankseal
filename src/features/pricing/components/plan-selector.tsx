@@ -91,7 +91,11 @@ function PlanRow({
   return (
     <label
       className={cn(
-        'flex cursor-pointer flex-wrap items-center gap-x-6 gap-y-4 rounded-card border-2 bg-surface p-5 transition-colors sm:flex-nowrap sm:p-6',
+        // Below `sm` the row becomes two stacked bands — identity, then pricing.
+        // Squeezing all four columns onto one line left the plan name 35px wide and
+        // wrapping mid-word ("3 / Month"), which is unreadable at a glance.
+        'grid cursor-pointer gap-4 rounded-card border-2 bg-surface p-5 transition-colors',
+        'sm:flex sm:items-center sm:gap-6 sm:p-6',
         checked ? 'border-brand-600' : 'border-transparent hover:border-border-strong',
         // The ring follows the input's focus, so keyboard users see the same affordance.
         'has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand-600',
@@ -106,37 +110,43 @@ function PlanRow({
         className="peer sr-only"
       />
 
-      <span
-        aria-hidden="true"
-        className={cn(
-          'inline-flex size-7 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
-          checked ? 'border-brand-600 bg-brand-600 text-white' : 'border-border-strong bg-surface',
-        )}
-      >
-        {checked ? <Check className="size-3.5" strokeWidth={3} /> : null}
-      </span>
+      <span className="flex items-center gap-4 sm:flex-1">
+        <span
+          aria-hidden="true"
+          className={cn(
+            'inline-flex size-7 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
+            checked ? 'border-brand-600 bg-brand-600 text-white' : 'border-border-strong bg-surface',
+          )}
+        >
+          {checked ? <Check className="size-3.5" strokeWidth={3} /> : null}
+        </span>
 
-      <span className="min-w-0 flex-1">
-        <span className="block text-xl font-bold text-ink-900">{plan.name}</span>
-        {percent > 0 ? (
-          <span className="mt-2 inline-flex items-center rounded-md bg-brand-50 px-2.5 py-1 text-[0.8125rem] font-medium text-brand-600">
-            {percent}% Savings
-          </span>
-        ) : null}
-      </span>
-
-      <span className="shrink-0 text-right">
-        <span className="block text-sm text-ink-500">Total</span>
-        <span className="mt-1 block text-lg font-bold text-ink-900 line-through">
-          {formatInr(plan.listPriceInr)}
+        <span className="min-w-0">
+          <span className="block text-xl font-bold whitespace-nowrap text-ink-900">{plan.name}</span>
+          {percent > 0 ? (
+            <span className="mt-2 inline-flex items-center rounded-md bg-brand-50 px-2.5 py-1 text-[0.8125rem] font-medium whitespace-nowrap text-brand-600">
+              {percent}% Savings
+            </span>
+          ) : null}
         </span>
       </span>
 
-      <span className="shrink-0 text-right">
-        <span className="block text-sm text-ink-500">Discount price</span>
-        <span className="mt-1 block text-xl font-bold text-ink-900">
-          {formatInr(plan.priceInr)}{' '}
-          <span className="text-sm font-normal text-ink-500">({percent}%)</span>
+      {/* `sm:contents` dissolves this wrapper at the breakpoint so the two price
+          blocks become direct children of the row again, as in the design. */}
+      <span className="flex items-center justify-between gap-6 pl-11 sm:contents sm:pl-0">
+        <span className="shrink-0 sm:text-right">
+          <span className="block text-sm text-ink-500">Total</span>
+          <span className="mt-1 block text-lg font-bold whitespace-nowrap text-ink-900 line-through">
+            {formatInr(plan.listPriceInr)}
+          </span>
+        </span>
+
+        <span className="shrink-0 text-right">
+          <span className="block text-sm text-ink-500">Discount price</span>
+          <span className="mt-1 block text-xl font-bold whitespace-nowrap text-ink-900">
+            {formatInr(plan.priceInr)}{' '}
+            <span className="text-sm font-normal text-ink-500">({percent}%)</span>
+          </span>
         </span>
       </span>
     </label>

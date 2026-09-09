@@ -127,7 +127,7 @@ export default function NearbyMap({
       // Decorative relative to the list beside it, which carries the same names and
       // distances as text — so the map is not the only way to reach the information.
       role="presentation"
-      className="h-full w-full [&_.leaflet-container]:font-sans"
+      className="relative isolate z-0 h-full w-full [&_.leaflet-container]:font-sans"
     />
   );
 }

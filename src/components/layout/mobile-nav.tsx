@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/cn';
 
@@ -31,9 +32,13 @@ export function MobileNav({
   isAuthenticated: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
+
+  // Portals need a DOM, so hold off until after hydration.
+  useEffect(() => setMounted(true), []);
 
   // A tap that navigates should dismiss the panel, including on a link to the current
   // page where the click handler alone would not fire a route change.
@@ -42,37 +47,31 @@ export function MobileNav({
   /**
    * Lock the page behind the panel.
    *
-   * `overflow: hidden` alone is ignored by iOS Safari, so the body is pinned at its
-   * current offset and the scroll position restored on close. The padding compensates
-   * for the scrollbar the lock removes, which would otherwise jog the page sideways.
+   * Locks the *root* element rather than pinning `body` to a negative offset. Pinning
+   * body works when the header is static, but ours is `sticky` — taking body out of
+   * flow reflows the whole document and the page visibly jumps on both open and close.
+   * Setting `overflow: hidden` on the root leaves body in flow, so the scroll position
+   * and the sticky header stay exactly where they were.
+   *
+   * The padding compensates for the scrollbar the lock removes, which would otherwise
+   * jog the page sideways on desktop.
    */
   useEffect(() => {
     if (!open) return;
 
-    const { body } = document;
-    const scrollY = window.scrollY;
-    const gutter = window.innerWidth - document.documentElement.clientWidth;
+    const root = document.documentElement;
+    const gutter = window.innerWidth - root.clientWidth;
     const previous = {
-      position: body.style.position,
-      top: body.style.top,
-      left: body.style.left,
-      right: body.style.right,
-      width: body.style.width,
-      overflow: body.style.overflow,
-      paddingRight: body.style.paddingRight,
+      overflow: root.style.overflow,
+      paddingRight: root.style.paddingRight,
     };
 
-    body.style.position = 'fixed';
-    body.style.top = `-${scrollY}px`;
-    body.style.left = '0';
-    body.style.right = '0';
-    body.style.width = '100%';
-    body.style.overflow = 'hidden';
-    if (gutter > 0) body.style.paddingRight = `${gutter}px`;
+    root.style.overflow = 'hidden';
+    if (gutter > 0) root.style.paddingRight = `${gutter}px`;
 
     return () => {
-      Object.assign(body.style, previous);
-      window.scrollTo(0, scrollY);
+      root.style.overflow = previous.overflow;
+      root.style.paddingRight = previous.paddingRight;
     };
   }, [open]);
 
@@ -128,16 +127,26 @@ export function MobileNav({
         {open ? <X className="size-5" /> : <Menu className="size-5" />}
       </button>
 
-      {/* Kept mounted so it fades rather than pops. */}
-      <div
-        onClick={() => setOpen(false)}
-        style={{ transitionTimingFunction: EASE }}
-        className={cn(
-          'fixed inset-0 z-10 bg-ink-950/40 transition-opacity duration-300 lg:hidden',
-          open ? 'opacity-100' : 'pointer-events-none opacity-0',
-        )}
-        aria-hidden="true"
-      />
+      {/*
+        Portaled to `body` and sat just under the header's own z-index. As a child of
+        `<header>` it painted over the bar's background and dimmed the logo along with
+        the page. Out here it darkens everything below the header and nothing above it.
+        Kept mounted so it fades rather than pops.
+      */}
+      {mounted
+        ? createPortal(
+            <div
+              onClick={() => setOpen(false)}
+              style={{ transitionTimingFunction: EASE }}
+              className={cn(
+                'fixed inset-0 z-40 bg-ink-950/40 transition-opacity duration-300 lg:hidden',
+                open ? 'opacity-100' : 'pointer-events-none opacity-0',
+              )}
+              aria-hidden="true"
+            />,
+            document.body,
+          )
+        : null}
 
       {/*
         `absolute … top-full` hangs the panel off the bar's bottom edge, outside the
@@ -153,14 +162,14 @@ export function MobileNav({
         inert={!open}
         style={{ gridTemplateRows: open ? '1fr' : '0fr', transitionTimingFunction: EASE }}
         className={cn(
-          'absolute inset-x-0 top-full z-20 grid overflow-hidden rounded-b-panel border-b border-border-subtle bg-surface',
+          'absolute inset-x-0 top-full z-20 grid overflow-hidden rounded-t-none rounded-b-panel border-b border-border-subtle bg-surface',
           'shadow-float focus:outline-none',
           'transition-[grid-template-rows,opacity] duration-[340ms] lg:hidden',
           'motion-reduce:transition-none',
           open ? 'opacity-100' : 'pointer-events-none opacity-0',
         )}
       >
-        <div className="min-h-0 overflow-hidden">
+        <div className="min-h-0 overflow-hidden overscroll-contain">
           <nav aria-label="Mobile" className="mx-auto w-full max-w-page px-4 py-4 sm:px-6">
             {items.map((item, index) => (
               <Link

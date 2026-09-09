@@ -26,7 +26,7 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
   ].filter(Boolean);
 
   return (
-    <article className="relative flex gap-4 rounded-card border border-border-subtle bg-surface p-4 transition-shadow hover:shadow-card">
+    <article className="relative flex gap-4 rounded-card border border-border-subtle bg-surface p-4 transition-shadow hover:shadow-card sm:p-4">
       {listing.imageUrl ? (
         <div className="relative hidden h-[4.5rem] w-[6.5rem] shrink-0 overflow-hidden rounded-lg bg-ink-100 sm:block">
           <Image
@@ -41,7 +41,12 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
       ) : null}
 
       <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1.5">
+        {/*
+          Stacked below `sm`, side by side above it. Left to `flex-wrap`, whether the
+          price sat beside the title or dropped under it depended on how long that
+          particular title was — so cards in the same list disagreed with each other.
+        */}
+        <div className="flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-x-3">
           <h3 className="text-[0.9375rem] font-semibold text-brand-600">
             {/* Stretched link: the whole row is one target, one tab stop. */}
             <Link href={href} className="hover:underline after:absolute after:inset-0 after:content-['']">
@@ -49,7 +54,7 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
             </Link>
           </h3>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
             {listing.isReauction ? <Tag tone="neutral">Re auction - Same Price</Tag> : null}
 
             {listing.priceDropPercent && listing.previousReservePriceInr ? (
@@ -64,7 +69,7 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
           </div>
         </div>
 
-        <p className="mt-2 flex items-center gap-1.5 text-xs text-ink-500">
+        <p className="mt-2.5 flex items-center gap-1.5 text-xs text-ink-500">
           <BankLogo
             name={listing.bankName}
             slug={listing.bankName}
@@ -74,7 +79,7 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
           {listing.bankName}
         </p>
 
-        <div className="mt-2.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <div className="mt-2.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
           <p className="flex flex-wrap items-center gap-x-2 text-xs text-ink-600">
             {listing.photoCount > 1 ? (
               <span className="flex items-center gap-1 text-ink-700">
@@ -95,10 +100,18 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
             <span>{POSSESSION_LABEL[listing.possessionType]}</span>
           </p>
 
-          {/* Above the stretched link so each stays its own target. */}
-          <div className="relative z-10 flex shrink-0 items-center gap-2">
-            <IconAction label={`Share ${listing.title}`} icon="share" />
-            <IconAction label={`Save ${listing.title} to watchlist`} icon="heart" />
+          {/*
+            Above the stretched link so each stays its own target. On mobile the row
+            spans the card so the secondary icons sit left and the primary action is
+            pushed to the right edge, away from them — grouped together, the three read
+            as one cluster and View Auction loses its weight.
+          */}
+          <div className="relative z-10 flex w-full items-center justify-between gap-2 sm:w-auto sm:shrink-0 sm:justify-end">
+            <div className="flex items-center gap-2">
+              <IconAction label={`Share ${listing.title}`} icon="share" />
+              <IconAction label={`Save ${listing.title} to watchlist`} icon="heart" />
+            </div>
+
             <Button asChild variant="dark" size="sm" className="h-11 px-4 text-[0.8125rem] sm:h-10">
               <Link href={href}>View Auction</Link>
             </Button>

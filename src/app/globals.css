@@ -63,7 +63,10 @@
 
   /* --- Semantic aliases --- */
   --color-surface: #ffffff;
-  --color-surface-muted: #f7f8fa;
+  /* The page ground for every route. Warm off-white, not the cool grey the ink ramp
+     is built on — the two are deliberately different temperatures, which is what keeps
+     white cards reading as lifted off the page rather than merging into it. */
+  --color-surface-muted: #f9f6f5;
   --color-surface-inverse: #0a0b0d;
   --color-border-subtle: #e9ecf1;
   --color-border-strong: #d5dae2;
@@ -149,11 +152,14 @@
     }
   }
 
-  /* A single, visible focus treatment everywhere. Never remove without a replacement. */
+  /* A single, visible focus treatment everywhere. Never remove without a replacement.
+     Deliberately no `border-radius` here: browsers already follow the element's own
+     radius when drawing an outline, and setting one leaked 4px onto the corners of
+     anything focusable — it was rounding the top of the mobile menu panel, which is
+     meant to sit flush against the header. */
   :focus-visible {
     outline: 2px solid var(--color-brand-600);
     outline-offset: 2px;
-    border-radius: 4px;
   }
 
   /* Kill the UA focus ring only where :focus-visible has already taken over. */

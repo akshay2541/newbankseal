@@ -30,9 +30,10 @@ export function InviteSection() {
       {/*
         Skyline backdrop. The source photograph is a colour sunset; the design wants a
         grey haze, so it is desaturated here rather than in the asset — the file stays
-        reusable and the treatment lives with the rest of the styling. The mask fades
-        the image out towards the top so it dissolves into the page instead of ending
-        on a hard edge.
+        reusable and the treatment lives with the rest of the styling.
+
+        The mask fades the image out towards the top so it dissolves into the page
+        instead of ending on a hard edge.
 
         Two numbers below work together and neither survives alone. The box is a wide
         1440:350 strip so the skyline occupies only the lower third of the section, as

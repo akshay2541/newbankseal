@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
@@ -82,16 +83,24 @@ export default async function ExplorePage({
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
-        <div className="space-y-3">
+        {/*
+          `flex` + `gap` rather than `space-y`. The ad slot has to sit between two cards
+          without becoming a card itself, which previously meant wrapping each entry in
+          a `display: contents` div — and `space-y` puts its margin on that wrapper,
+          which generates no box, so the margin was silently dropped and the cards
+          rendered flush. `gap` spaces the laid-out children directly, so a Fragment
+          carries the key and nothing has to fake being boxless.
+        */}
+        <div className="flex flex-col gap-3">
           {results.items.length === 0 ? (
             <EmptyState />
           ) : (
             results.items.map((listing, index) => (
-              <div key={listing.id} className="contents">
+              <Fragment key={listing.id}>
                 <ListingRow listing={listing} />
                 {/* One in-feed slot, placed mid-page as in the design. */}
                 {index === 5 ? <AdSlot className="h-40" /> : null}
-              </div>
+              </Fragment>
             ))
           )}
 

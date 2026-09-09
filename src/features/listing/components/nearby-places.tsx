@@ -91,7 +91,13 @@ export function NearbyPlaces({
       </div>
 
       <div className="mt-4 grid gap-3 overflow-hidden rounded-card border border-border-subtle sm:grid-cols-[minmax(0,1fr)_16rem] sm:gap-0">
-        <div className="h-72 sm:h-[28rem]">
+        {/*
+          `isolate` is load-bearing. Leaflet assigns its panes and controls z-index
+          values up to 1000; without a stacking context of their own those resolve
+          against the root and paint over the sticky header and the mobile menu panel.
+          Isolating confines them to this box.
+        */}
+        <div className="relative isolate z-0 h-72 sm:h-[28rem]">
           {latitude !== null && longitude !== null ? (
             <NearbyMap
               latitude={latitude}
