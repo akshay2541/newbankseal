@@ -38,3 +38,6 @@ yarn-error.log*
 
 # drizzle
 /drizzle/meta/_journal.json.bak
+
+# verification builds (npm run build:check)
+/.next-verify/

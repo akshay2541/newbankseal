@@ -25,7 +25,18 @@ const serverSchema = z.object({
   DATABASE_URL: z.string().url().optional(),
   DATABASE_URL_UNPOOLED: z.string().url().optional(),
 
-  APP_URL: nonEmpty('APP_URL').url(),
+  /**
+   * Canonical origin. Security-relevant: CSRF and cookie scoping compare against it.
+   * Defaults to the deployment origin Vercel injects so a preview build is not blocked,
+   * but a production deployment on a custom domain MUST set this explicitly — the
+   * injected value is the *.vercel.app host, which would reject legitimate requests.
+   */
+  APP_URL: z
+    .string()
+    .optional()
+    .transform((value) => value?.trim() || process.env.VERCEL_URL || '')
+    .transform((value) => (value && !/^https?:\/\//i.test(value) ? `https://${value}` : value))
+    .pipe(nonEmpty('APP_URL').url()),
 
   // 32 bytes of entropy minimum. Base64 of 32 bytes is 44 chars.
   SESSION_SECRET: z.string().min(32, 'SESSION_SECRET must be at least 32 characters'),
@@ -81,8 +92,53 @@ export function getServerEnv(): ServerEnv {
   return cachedServerEnv;
 }
 
+/**
+ * Resolve the public origin without ever throwing.
+ *
+ * This value only feeds `metadataBase`, the sitemap entry and share links. Getting it
+ * wrong degrades those; it should not be able to fail a deployment. The previous
+ * version parsed at module scope, so an empty or protocol-less value took the whole
+ * build down while collecting page data — Zod's `.default()` only applies to
+ * `undefined`, not to `""` or to `app.example.com`.
+ *
+ * Resolution order: an explicit NEXT_PUBLIC_APP_URL, then the origin Vercel injects for
+ * the current deployment, then localhost.
+ */
+function resolvePublicAppUrl(): string {
+  const candidates = [
+    process.env.NEXT_PUBLIC_APP_URL,
+    // Vercel supplies these as bare hostnames, with no scheme.
+    process.env.NEXT_PUBLIC_VERCEL_URL,
+    process.env.VERCEL_URL,
+  ];
+
+  for (const candidate of candidates) {
+    const normalised = normaliseOrigin(candidate);
+    if (normalised) return normalised;
+  }
+
+  return 'http://localhost:3000';
+}
+
+/** Accepts a full URL or a bare host, and returns a valid origin or null. */
+function normaliseOrigin(value: string | undefined): string | null {
+  const trimmed = value?.trim();
+  if (!trimmed) return null;
+
+  const withScheme = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+
+  try {
+    return new URL(withScheme).origin;
+  } catch {
+    return null;
+  }
+}
+
+// Still parsed through the schema so the contract has one definition, but against a
+// value the resolver has already guaranteed is a valid absolute URL — so this cannot
+// throw during a build the way parsing raw `process.env` did.
 export const clientEnv: ClientEnv = clientSchema.parse({
-  NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+  NEXT_PUBLIC_APP_URL: resolvePublicAppUrl(),
 });
 
 export const isProduction = process.env.NODE_ENV === 'production';

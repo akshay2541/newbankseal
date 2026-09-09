@@ -35,9 +35,9 @@ export function CategorySection({
           <li key={category.slug}>
             <Link
               href={`/explore?category=${encodeURIComponent(category.slug)}`}
-              className="group flex items-center gap-3 rounded-card p-1 transition-colors hover:bg-ink-100/60"
+              className="group flex min-w-0 items-center gap-2.5 rounded-card p-1 transition-colors hover:bg-ink-100/60 sm:gap-3"
             >
-              <IconTile iconKey={category.iconKey} size="lg" />
+              <IconTile iconKey={category.iconKey} size="lg" className="size-12 rounded-xl sm:size-14 sm:rounded-2xl" />
 
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm text-ink-600">{category.name}</span>
@@ -48,7 +48,7 @@ export function CategorySection({
 
               <span
                 aria-hidden="true"
-                className="inline-flex size-13 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-ink-900 transition-colors group-hover:bg-brand-100"
+                className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-ink-900 transition-colors group-hover:bg-brand-100 sm:size-13"
               >
                 <ArrowRight className="size-5 transition-transform group-hover:translate-x-0.5" />
               </span>

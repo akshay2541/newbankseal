@@ -78,7 +78,7 @@ export function NearbyPlaces({
                 setSelectedId(null);
               }}
               className={cn(
-                'shrink-0 rounded-lg border px-4 py-2.5 text-[0.8125rem] font-medium transition-colors',
+                'inline-flex h-11 shrink-0 items-center rounded-lg border px-4 text-[0.8125rem] font-medium transition-colors',
                 selected
                   ? 'border-brand-600 bg-brand-600 text-white'
                   : 'border-border-subtle bg-surface text-ink-700 hover:border-brand-200 hover:bg-brand-50',

@@ -131,7 +131,7 @@ export function PropertyCard({
           </p>
 
           {/* Sits above the stretched link so it remains its own click target. */}
-          <Button asChild variant="dark" size="sm" className="relative z-10 shrink-0">
+          <Button asChild variant="dark" size="sm" className="relative z-10 h-11 shrink-0 sm:h-8">
             <Link href={href}>View Auction</Link>
           </Button>
         </div>
@@ -178,7 +178,7 @@ function IconAction({ label, icon: Icon }: { label: string; icon: typeof Heart }
     <button
       type="button"
       aria-label={label}
-      className="relative z-10 inline-flex size-7 items-center justify-center rounded-full bg-white/90 text-ink-600 shadow-card backdrop-blur transition-colors hover:bg-white hover:text-brand-600"
+      className="tap-target relative z-10 inline-flex size-8 items-center justify-center rounded-full bg-white/90 text-ink-600 shadow-card backdrop-blur transition-colors hover:bg-white hover:text-brand-600 sm:size-7"
     >
       <Icon className="size-3.5" />
     </button>

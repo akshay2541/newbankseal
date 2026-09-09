@@ -20,7 +20,7 @@ export function Wordmark({
     <Link
       href="/"
       className={cn(
-        'shrink-0 font-display text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-[2.5rem] lg:leading-none',
+        'inline-flex shrink-0 items-center py-1.5 font-display text-2xl font-extrabold tracking-tight sm:text-3xl lg:py-0 lg:text-[2.5rem] lg:leading-none',
         tone === 'brand' ? 'text-brand-600' : 'text-white',
         className,
       )}

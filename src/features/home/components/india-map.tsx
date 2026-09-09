@@ -187,7 +187,7 @@ export function IndiaMap({ markers, className }: { markers: readonly MapMarker[]
               aria-controls={open ? popupId : undefined}
               aria-label={`${marker.city}: ${formatCount(marker.listings)} listings`}
               className={cn(
-                'absolute -translate-x-1/2 -translate-y-full cursor-pointer rounded-full transition-transform',
+                'tap-target absolute -translate-x-1/2 -translate-y-full cursor-pointer rounded-full transition-transform',
                 'hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700',
                 open && 'scale-110',
               )}

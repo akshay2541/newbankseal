@@ -26,7 +26,7 @@ export function TopCities({ cities }: { cities: CityFacet[] }) {
             <li key={city.slug}>
               <Link
                 href={`/explore?city=${encodeURIComponent(city.slug)}`}
-                className="group flex flex-col items-center gap-2.5 text-center"
+                className="group flex flex-col items-center gap-2.5 rounded-xl py-2 text-center transition-colors hover:bg-ink-50"
               >
                 <span className="inline-flex size-14 items-center justify-center rounded-xl text-ink-700 transition-colors group-hover:bg-brand-50 group-hover:text-brand-600">
                   <CityIcon slug={city.slug} className="size-8" />

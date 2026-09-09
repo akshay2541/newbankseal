@@ -20,8 +20,12 @@ import { Wordmark } from './wordmark';
 export async function SiteHeader() {
   const session = await safeSession();
 
+  // The bar is opaque rather than blurred on purpose. `backdrop-filter` makes an
+  // element the containing block for its `position: fixed` descendants, which trapped
+  // the mobile menu's full-screen backdrop inside the 72px bar. The blur bought very
+  // little and cost that.
   return (
-    <header className="sticky top-0 z-50 border-b border-border-subtle bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/85">
+    <header className="sticky top-0 z-50 border-b border-border-subtle bg-surface">
       <Container className="flex h-18 items-center justify-between gap-6 lg:h-header">
         <Wordmark />
 

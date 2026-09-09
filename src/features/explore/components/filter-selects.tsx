@@ -45,7 +45,7 @@ export function SortSelect({ query }: { query: ExploreQuery }) {
       <SelectTrigger
         aria-label="Sort results"
         data-pending={pending || undefined}
-        className="h-10 w-auto gap-3 rounded-lg border-border-subtle px-4 text-[0.8125rem] font-medium text-ink-800 data-[pending]:opacity-60"
+        className="h-11 w-auto gap-3 rounded-lg border-border-subtle px-4 text-[0.8125rem] font-medium text-ink-800 data-[pending]:opacity-60 sm:h-10"
       >
         <span className="whitespace-nowrap">
           Sort by : <SelectValue />

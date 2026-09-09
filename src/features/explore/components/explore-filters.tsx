@@ -54,7 +54,7 @@ export function ExploreFilters({
               })}
               aria-pressed={active}
               className={cn(
-                'inline-flex h-10 items-center rounded-lg border px-4 text-[0.8125rem] font-medium transition-colors',
+                'inline-flex h-11 items-center rounded-lg border px-4 text-[0.8125rem] font-medium transition-colors sm:h-10',
                 active
                   ? 'border-brand-600 bg-brand-600 text-white'
                   : 'border-border-subtle bg-surface text-ink-700 hover:border-brand-200 hover:bg-brand-50',

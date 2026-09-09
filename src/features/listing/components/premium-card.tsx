@@ -32,7 +32,7 @@ export function PremiumCard() {
       </Link>
 
       <p className="mt-5">
-        <Link href="/sign-up" className="text-[0.9375rem] font-semibold text-white underline underline-offset-4">
+        <Link href="/sign-up" className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold text-white underline underline-offset-4">
           Register Now
         </Link>
       </p>
@@ -44,10 +44,10 @@ export function PremiumCard() {
       <p className="mt-5 text-[0.8125rem] text-white/70">If you are already a premium member</p>
 
       <p className="mt-1 flex items-center justify-center gap-5">
-        <Link href="/sign-in" className="text-[0.9375rem] font-semibold text-white underline underline-offset-4">
+        <Link href="/sign-in" className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold text-white underline underline-offset-4">
           Login
         </Link>
-        <Link href="/sign-up" className="text-[0.9375rem] font-semibold text-white underline underline-offset-4">
+        <Link href="/sign-up" className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold text-white underline underline-offset-4">
           Register
         </Link>
       </p>

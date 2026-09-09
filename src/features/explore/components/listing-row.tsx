@@ -99,7 +99,7 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
           <div className="relative z-10 flex shrink-0 items-center gap-2">
             <IconAction label={`Share ${listing.title}`} icon="share" />
             <IconAction label={`Save ${listing.title} to watchlist`} icon="heart" />
-            <Button asChild variant="dark" size="sm" className="h-10 px-4 text-[0.8125rem]">
+            <Button asChild variant="dark" size="sm" className="h-11 px-4 text-[0.8125rem] sm:h-10">
               <Link href={href}>View Auction</Link>
             </Button>
           </div>
@@ -135,7 +135,7 @@ function IconAction({ label, icon }: { label: string; icon: ActionIconKey }) {
     <button
       type="button"
       aria-label={label}
-      className="inline-flex size-10 items-center justify-center rounded-btn bg-action-well text-action-glyph transition-colors hover:bg-brand-50 hover:text-brand-600"
+      className="inline-flex size-11 items-center justify-center rounded-btn bg-action-well text-action-glyph transition-colors hover:bg-brand-50 hover:text-brand-600 sm:size-10"
     >
       <ActionIcon icon={icon} />
     </button>

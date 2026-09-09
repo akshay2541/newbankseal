@@ -30,7 +30,7 @@ export function SectionHeading({
       {viewAllHref ? (
         <Link
           href={viewAllHref}
-          className="shrink-0 text-xs font-medium text-ink-500 transition-colors hover:text-brand-600"
+          className="-mr-2 inline-flex min-h-11 shrink-0 items-center px-2 text-xs font-medium text-ink-500 transition-colors hover:text-brand-600 sm:mr-0 sm:min-h-0 sm:px-0"
         >
           {viewAllLabel}
         </Link>

@@ -28,7 +28,7 @@ export function SimilarListings({ listings, viewAllHref }: { listings: ListingCa
 
         <Link
           href={viewAllHref}
-          className="inline-flex h-9 shrink-0 items-center rounded-btn bg-brand-50 px-4 text-[0.8125rem] font-medium text-brand-600 transition-colors hover:bg-brand-100"
+          className="inline-flex h-11 shrink-0 items-center rounded-btn bg-brand-50 px-4 text-[0.8125rem] font-medium text-brand-600 transition-colors hover:bg-brand-100 sm:h-9"
         >
           View All
         </Link>
@@ -76,7 +76,7 @@ function SimilarCard({ listing }: { listing: ListingCard }) {
         <p className="text-base font-bold text-success-500">{formatInr(listing.reservePriceInr)}</p>
 
         {/* Above the stretched link so it stays its own target. */}
-        <Button asChild variant="dark" size="sm" className="relative z-10 h-9 px-4 text-[0.8125rem]">
+        <Button asChild variant="dark" size="sm" className="relative z-10 h-11 px-4 text-[0.8125rem] sm:h-9">
           <Link href={href}>View Auction</Link>
         </Button>
       </div>

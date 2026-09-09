@@ -45,7 +45,7 @@ export function LockedCard({
           action ?? (
             <Link
               href="/pricing"
-              className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-btn border border-border-strong bg-surface px-3.5 text-xs font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
+              className="inline-flex h-11 shrink-0 items-center gap-1.5 rounded-btn border border-border-strong bg-surface px-4 text-xs font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
             >
               Unlock
               <Lock className="size-3.5" aria-hidden="true" />

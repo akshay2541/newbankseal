@@ -69,18 +69,18 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
     <Container className="py-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs">
-          <Link href="/" className="rounded-md bg-ink-100 px-2.5 py-1.5 font-medium text-ink-600 hover:bg-ink-200">
+          <Link href="/" className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-600 hover:bg-ink-200">
             Home
           </Link>
           <ChevronRight aria-hidden="true" className="size-3.5 text-ink-400" />
           <Link
             href={`/explore?city=${encodeURIComponent(listing.citySlug)}`}
-            className="rounded-md bg-ink-100 px-2.5 py-1.5 font-medium text-ink-600 hover:bg-ink-200"
+            className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-600 hover:bg-ink-200"
           >
             {listing.cityName}
           </Link>
           <ChevronRight aria-hidden="true" className="size-3.5 text-ink-400" />
-          <span aria-current="page" className="rounded-md bg-ink-100 px-2.5 py-1.5 font-medium text-ink-700">
+          <span aria-current="page" className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-700">
             Product Details
           </span>
         </nav>
@@ -102,7 +102,7 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
           </h1>
           <Link
             href={`/banks/${encodeURIComponent(listing.bankSlug)}`}
-            className="mt-2 inline-flex items-center gap-2 text-sm text-brand-600 hover:underline"
+            className="mt-1 inline-flex min-h-11 items-center gap-2 text-sm text-brand-600 hover:underline sm:mt-2 sm:min-h-0"
           >
             <BankLogo name={listing.bankName} slug={listing.bankSlug} logoUrl={listing.bankLogoUrl} />
             {listing.bankName}
@@ -199,7 +199,7 @@ function HeaderAction({ label, icon, text }: { label: string; icon: ActionIconKe
     <button
       type="button"
       aria-label={label}
-      className="inline-flex h-9 items-center gap-1.5 rounded-btn border border-border-subtle bg-surface px-3.5 text-xs font-medium text-ink-700 transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
+      className="inline-flex h-11 items-center gap-1.5 rounded-btn border border-border-subtle bg-surface px-4 text-xs font-medium text-ink-700 transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 sm:h-9 sm:px-3.5"
     >
       <ActionIcon icon={icon} className="size-3.5" />
       {text}

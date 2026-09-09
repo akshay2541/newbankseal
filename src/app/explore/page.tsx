@@ -65,12 +65,12 @@ export default async function ExplorePage({
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs">
         <Link
           href="/"
-          className="rounded-md bg-ink-100 px-2.5 py-1.5 font-medium text-ink-600 transition-colors hover:bg-ink-200"
+          className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-600 transition-colors hover:bg-ink-200"
         >
           Home
         </Link>
         <ChevronRight aria-hidden="true" className="size-3.5 text-ink-400" />
-        <span aria-current="page" className="rounded-md bg-ink-100 px-2.5 py-1.5 font-medium text-ink-700">
+        <span aria-current="page" className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-700">
           Auction Listings
         </span>
       </nav>

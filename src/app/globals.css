@@ -216,3 +216,48 @@
     animation: popover-enter 130ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
+
+/* Leaflet ships 30px zoom controls, below a comfortable touch target on a phone.
+   Two things make this work. It is unlayered, because Leaflet's own stylesheet is
+   imported after this file and is unlayered too, so anything in `@layer base` loses to
+   it outright. And `leaflet-touch` is compounded onto `.leaflet-container` rather than
+   treated as a descendant — Leaflet puts both classes on the same element, so the
+   descendant form never matches at all. */
+.leaflet-container.leaflet-touch .leaflet-bar a,
+.leaflet-container .leaflet-bar a {
+  width: 2.75rem;
+  height: 2.75rem;
+  line-height: 2.75rem;
+  color: var(--color-ink-700);
+}
+
+@media (min-width: 640px) {
+  .leaflet-container.leaflet-touch .leaflet-bar a,
+  .leaflet-container .leaflet-bar a {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+  }
+}
+
+.leaflet-container .leaflet-bar {
+  border-radius: 0.625rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* Expands an element's touch area to 44px without changing its visual size or the
+   surrounding layout. For controls whose mark is deliberately small — a map pin, an
+   icon button sitting on a photograph — where padding would move things. */
+@utility tap-target {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, 2.75rem);
+    height: max(100%, 2.75rem);
+    transform: translate(-50%, -50%);
+  }
+}

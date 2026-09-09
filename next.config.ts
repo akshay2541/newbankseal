@@ -29,6 +29,13 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  /**
+   * `next build` and `next dev` share `.next` by default, so a verification build run
+   * while the dev server is up wipes the manifests it is serving and the running app
+   * loses its stylesheet. `npm run build:check` sets this to build somewhere else.
+   */
+  distDir: process.env.NEXT_DIST_DIR ?? '.next',
+
   reactStrictMode: true,
   poweredByHeader: false,
 

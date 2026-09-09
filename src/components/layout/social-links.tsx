@@ -14,7 +14,7 @@ const ICONS = {
 
 export function SocialLinks() {
   return (
-    <ul className="flex items-center gap-1">
+    <ul className="flex items-center">
       {siteConfig.social.map((item, index) => {
         const Icon = item.icon in ICONS ? ICONS[item.icon as keyof typeof ICONS] : null;
 
@@ -31,7 +31,7 @@ export function SocialLinks() {
               // noopener defeats reverse-tabnabbing; noreferrer stops the Referer leak.
               rel="noopener noreferrer"
               aria-label={item.label}
-              className="inline-flex size-7 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              className="inline-flex size-11 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white sm:size-9"
             >
               {Icon ? (
                 <Icon className="size-3.5" />

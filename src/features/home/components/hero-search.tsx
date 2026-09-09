@@ -114,7 +114,7 @@ export function HeroSearch({ categories }: { categories: CategoryFacet[] }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-flex h-10 items-center rounded-btn bg-ink-100 px-4 text-[0.8125rem] font-medium text-ink-700 transition-colors hover:bg-brand-50 hover:text-brand-700"
+                  className="inline-flex h-11 items-center rounded-btn bg-ink-100 px-4 text-[0.8125rem] font-medium text-ink-700 transition-colors hover:bg-brand-50 hover:text-brand-700 sm:h-10"
                 >
                   {item.label}
                 </Link>
