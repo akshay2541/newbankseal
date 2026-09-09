@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Bank Seal">
+  <rect width="64" height="64" rx="14" fill="#1570ef"/>
+  <path d="M14 27 32 15l18 12v3H14v-3Z" fill="#fff"/>
+  <rect x="19" y="33" width="5" height="13" fill="#fff"/>
+  <rect x="29.5" y="33" width="5" height="13" fill="#fff"/>
+  <rect x="40" y="33" width="5" height="13" fill="#fff"/>
+  <rect x="14" y="48" width="36" height="4" rx="1.5" fill="#fff"/>
+</svg>
