@@ -72,7 +72,7 @@ export function Rail({
         role="region"
         aria-label={ariaLabel}
         tabIndex={0}
-        className={cn('rail gap-4 pb-1', itemClassName)}
+        className={cn('rail gap-gap pb-1', itemClassName)}
       >
         {children}
       </div>
@@ -122,7 +122,7 @@ function RailArrow({ side, hidden, onClick }: { side: 'left' | 'right'; hidden: 
       tabIndex={hidden ? -1 : 0}
       aria-label={side === 'left' ? 'Scroll left' : 'Scroll right'}
       className={cn(
-        'absolute top-1/2 z-20 hidden size-9 -translate-y-1/2 items-center justify-center rounded-full',
+        'absolute top-1/2 z-20 hidden size-control-sm -translate-y-1/2 items-center justify-center rounded-full',
         'border border-border-subtle bg-surface text-ink-700 shadow-lift',
         'transition-all hover:bg-ink-50 hover:text-ink-900 sm:flex',
         side === 'left' ? '-left-3' : '-right-3',

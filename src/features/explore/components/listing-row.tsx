@@ -47,7 +47,7 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
           particular title was — so cards in the same list disagreed with each other.
         */}
         <div className="flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-x-3">
-          <h3 className="text-[0.9375rem] font-semibold text-brand-600">
+          <h3 className="text-body font-semibold text-brand-600">
             {/* Stretched link: the whole row is one target, one tab stop. */}
             <Link href={href} className="hover:underline after:absolute after:inset-0 after:content-['']">
               {listing.title}
@@ -63,7 +63,7 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
               </Tag>
             ) : null}
 
-            <p className="text-[0.9375rem] font-bold whitespace-nowrap text-success-500">
+            <p className="text-body font-bold whitespace-nowrap text-success-500">
               {formatInr(listing.reservePriceInr)}
             </p>
           </div>
@@ -112,7 +112,7 @@ export function ListingRow({ listing }: { listing: ListingCard }) {
               <IconAction label={`Save ${listing.title} to watchlist`} icon="heart" />
             </div>
 
-            <Button asChild variant="dark" size="sm" className="h-11 px-4 text-[0.8125rem] sm:h-10">
+            <Button asChild variant="dark" size="sm">
               <Link href={href}>View Auction</Link>
             </Button>
           </div>
@@ -148,7 +148,7 @@ function IconAction({ label, icon }: { label: string; icon: ActionIconKey }) {
     <button
       type="button"
       aria-label={label}
-      className="inline-flex size-11 items-center justify-center rounded-btn bg-action-well text-action-glyph transition-colors hover:bg-brand-50 hover:text-brand-600 sm:size-10"
+      className="inline-flex size-control items-center justify-center rounded-btn bg-action-well text-action-glyph transition-colors hover:bg-brand-50 hover:text-brand-600"
     >
       <ActionIcon icon={icon} />
     </button>

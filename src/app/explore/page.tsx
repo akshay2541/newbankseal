@@ -62,27 +62,27 @@ export default async function ExplorePage({
     : `${formatCount(results.total)} Bank Auction Properties`;
 
   return (
-    <Container className="py-6">
+    <Container className="py-block">
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs">
         <Link
           href="/"
-          className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-600 transition-colors hover:bg-ink-200"
+          className="inline-flex h-control-sm items-center rounded-md bg-ink-100 px-3 font-medium text-ink-600 transition-colors hover:bg-ink-200"
         >
           Home
         </Link>
         <ChevronRight aria-hidden="true" className="size-3.5 text-ink-400" />
-        <span aria-current="page" className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-700">
+        <span aria-current="page" className="inline-flex h-control-sm items-center rounded-md bg-ink-100 px-3 font-medium text-ink-700">
           Auction Listings
         </span>
       </nav>
 
-      <h1 className="mt-5 font-display text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">{heading}</h1>
+      <h1 className="mt-block font-display text-h4 font-bold tracking-tight text-ink-900">{heading}</h1>
 
       <div className="mt-5">
         <ExploreFilters query={query} banks={banks} categories={categories} />
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
+      <div className="mt-block grid gap-block lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
         {/*
           `flex` + `gap` rather than `space-y`. The ad slot has to sit between two cards
           without becoming a card itself, which previously meant wrapping each entry in
@@ -120,14 +120,14 @@ export default async function ExplorePage({
 
 function EmptyState() {
   return (
-    <div className="rounded-card border border-border-subtle bg-surface px-6 py-16 text-center">
-      <h2 className="text-base font-semibold text-ink-900">No auctions match those filters</h2>
+    <div className="rounded-card border border-border-subtle bg-surface px-card py-section-lg text-center">
+      <h2 className="text-h5 font-semibold text-ink-900">No auctions match those filters</h2>
       <p className="mt-2 text-sm text-ink-500">
         Try widening your search — clear a filter, or search a different locality.
       </p>
       <Link
         href="/explore"
-        className="mt-5 inline-flex h-10 items-center rounded-btn bg-brand-600 px-5 text-sm font-medium text-white transition-colors hover:bg-brand-700"
+        className="mt-block inline-flex h-control items-center rounded-btn bg-brand-600 px-5 text-body font-medium text-white transition-colors hover:bg-brand-700"
       >
         Clear all filters
       </Link>

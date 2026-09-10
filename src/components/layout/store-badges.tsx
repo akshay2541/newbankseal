@@ -45,7 +45,7 @@ function StoreBadge({
       {glyph}
       <span className="leading-tight">
         <span className="block text-[0.5rem] tracking-wide text-white uppercase">{caption}</span>
-        <span className="block text-[0.9375rem] leading-tight font-semibold text-white">{name}</span>
+        <span className="block text-body leading-tight font-semibold text-white">{name}</span>
       </span>
     </a>
   );

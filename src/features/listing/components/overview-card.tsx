@@ -26,14 +26,14 @@ export function OverviewCard({ listing }: { listing: ListingDetail }) {
   ];
 
   return (
-    <Card className="p-5">
-      <h2 className="text-base font-semibold text-ink-900">Overview</h2>
+    <Card className="p-card">
+      <h2 className="text-h5 font-semibold text-ink-900">Overview</h2>
 
       <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3">
         {facts.map((fact) => (
           <div key={fact.label} className="min-w-0">
             <dt className="text-2xs text-ink-400">{fact.label}</dt>
-            <dd className="mt-1 text-[0.8125rem] font-medium break-words text-ink-900">
+            <dd className="mt-1 text-meta font-medium break-words text-ink-900">
               {fact.value ?? <span className="text-ink-400">—</span>}
             </dd>
           </div>
@@ -43,7 +43,7 @@ export function OverviewCard({ listing }: { listing: ListingDetail }) {
       {listing.description ? (
         <div className="mt-6 border-t border-border-subtle pt-4">
           <h3 className="text-2xs text-ink-400">Overview</h3>
-          <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-700">{listing.description}</p>
+          <p className="mt-1.5 text-meta leading-relaxed text-ink-700">{listing.description}</p>
         </div>
       ) : null}
     </Card>

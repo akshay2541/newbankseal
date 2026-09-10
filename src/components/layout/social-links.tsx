@@ -31,7 +31,7 @@ export function SocialLinks() {
               // noopener defeats reverse-tabnabbing; noreferrer stops the Referer leak.
               rel="noopener noreferrer"
               aria-label={item.label}
-              className="inline-flex size-11 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white sm:size-9"
+              className="inline-flex size-control-sm items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
               {Icon ? (
                 <Icon className="size-3.5" />

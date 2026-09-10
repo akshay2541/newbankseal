@@ -10,7 +10,7 @@ export function NewsRail({ articles }: { articles: ArticleCard[] }) {
   if (articles.length === 0) return null;
 
   return (
-    <Container as="section" className="pt-12" aria-labelledby="latest-news-heading">
+    <Container as="section" className="pt-section" aria-labelledby="latest-news-heading">
       <SectionHeading id="latest-news-heading" lead="Latest" highlight="News" viewAllHref="/blog" />
 
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -30,7 +30,7 @@ export function AuctionTabs({ tabs }: { tabs: TabPanel[] }) {
   if (!activeTab) return null;
 
   return (
-    <Container className="pt-6">
+    <Container className="pt-section">
       <TabList
         tabs={tabs}
         activeKey={activeTab.key}
@@ -46,9 +46,9 @@ export function AuctionTabs({ tabs }: { tabs: TabPanel[] }) {
         id={`${baseId}-panel-${activeTab.key}`}
         aria-labelledby={`${baseId}-tab-${activeTab.key}`}
         tabIndex={0}
-        className="p-5"
+        className="p-card"
       >
-        <h2 className="text-lg font-semibold text-ink-900">{activeTab.title}</h2>
+        <h2 className="text-h5 font-semibold text-ink-900">{activeTab.title}</h2>
 
         {activeTab.items.length === 0 ? (
           <p className="mt-4 text-sm text-ink-500">No auctions listed in this category yet. Check back shortly.</p>

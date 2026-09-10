@@ -76,7 +76,7 @@ export function SignUpForm() {
           <BadgeCheck className="size-3" aria-hidden="true" />
           Free to join
         </span>
-        <h1 className="mt-3.5 font-display text-[1.75rem] leading-tight font-bold tracking-tight text-ink-900">
+        <h1 className="mt-3.5 font-display text-h3 font-bold tracking-tight text-ink-900">
           Create your account
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-ink-500">
@@ -153,7 +153,7 @@ export function SignUpForm() {
 
         <Checkbox name="marketingOptIn" label="Email me new listings that match my interests." />
 
-        <Button type="submit" size="lg" className="mt-1 h-12 w-full text-[0.9375rem]" disabled={pending}>
+        <Button type="submit" size="lg" className="mt-1 w-full" disabled={pending}>
           {pending ? 'Creating account…' : 'Create account'}
         </Button>
       </form>

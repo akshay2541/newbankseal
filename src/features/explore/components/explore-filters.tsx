@@ -54,7 +54,7 @@ export function ExploreFilters({
               })}
               aria-pressed={active}
               className={cn(
-                'inline-flex h-11 items-center rounded-lg border px-4 text-[0.8125rem] font-medium transition-colors sm:h-10',
+                'inline-flex h-control items-center rounded-lg border px-4 text-meta font-medium transition-colors',
                 active
                   ? 'border-brand-600 bg-brand-600 text-white'
                   : 'border-border-subtle bg-surface text-ink-700 hover:border-brand-200 hover:bg-brand-50',
@@ -102,7 +102,7 @@ export function ExploreFilters({
               // at the source rather than on submit.
               maxLength={120}
               placeholder="Search location"
-              className="h-11 w-full rounded-lg border border-border-subtle bg-surface pr-3.5 pl-10 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/20"
+              className="h-control w-full rounded-lg border border-border-subtle bg-surface pr-3.5 pl-10 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/20"
             />
           </div>
 
@@ -125,7 +125,7 @@ export function ExploreFilters({
             className="min-w-0 flex-1"
           />
 
-          <Button type="submit" className="h-11 shrink-0 px-6 text-sm">
+          <Button type="submit" className="shrink-0">
             Search Result
           </Button>
         </div>

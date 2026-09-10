@@ -21,8 +21,8 @@ export function SectionHeading({
   id?: string;
 }) {
   return (
-    <div className={cn('mb-4 flex items-end justify-between gap-4', className)}>
-      <h2 id={id} className="font-display text-xl font-bold tracking-tight text-ink-900 sm:text-2xl">
+    <div className={cn('mb-gap flex items-end justify-between gap-3', className)}>
+      <h2 id={id} className="font-display text-h4 font-bold tracking-tight text-ink-900">
         {lead}
         {highlight ? <span className="text-brand-600"> {highlight}</span> : null}
       </h2>
@@ -30,7 +30,7 @@ export function SectionHeading({
       {viewAllHref ? (
         <Link
           href={viewAllHref}
-          className="-mr-2 inline-flex min-h-11 shrink-0 items-center px-2 text-xs font-medium text-ink-500 transition-colors hover:text-brand-600 sm:mr-0 sm:min-h-0 sm:px-0"
+          className="-mr-2 inline-flex min-h-control-sm shrink-0 items-center px-2 text-meta font-medium text-ink-500 transition-colors hover:text-brand-600 sm:mr-0 sm:px-0"
         >
           {viewAllLabel}
         </Link>

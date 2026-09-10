@@ -131,7 +131,7 @@ export function PropertyCard({
           </p>
 
           {/* Sits above the stretched link so it remains its own click target. */}
-          <Button asChild variant="dark" size="sm" className="relative z-10 h-11 shrink-0 sm:h-8">
+          <Button asChild variant="dark" size="sm" className="relative z-10 shrink-0">
             <Link href={href}>View Auction</Link>
           </Button>
         </div>

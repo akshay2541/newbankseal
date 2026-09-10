@@ -19,8 +19,8 @@ export default function RouteError({ error, reset }: { error: Error & { digest?:
   }, [error.digest]);
 
   return (
-    <Container className="flex min-h-[60vh] flex-col items-center justify-center py-20 text-center">
-      <h1 className="font-display text-2xl font-bold tracking-tight text-ink-900 sm:text-3xl">
+    <Container className="flex min-h-[60vh] flex-col items-center justify-center py-section-lg text-center">
+      <h1 className="font-display text-h2 font-bold tracking-tight text-ink-900">
         Something went wrong
       </h1>
       <p className="mt-3 max-w-md text-sm text-ink-500">
@@ -31,7 +31,7 @@ export default function RouteError({ error, reset }: { error: Error & { digest?:
         <p className="mt-4 font-mono text-2xs text-ink-400">Reference: {error.digest}</p>
       ) : null}
 
-      <div className="mt-8 flex flex-wrap justify-center gap-3">
+      <div className="mt-block flex flex-wrap justify-center gap-3">
         <Button variant="primary" onClick={reset}>
           Try again
         </Button>

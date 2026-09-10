@@ -31,9 +31,9 @@ export function Field({
   const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined;
 
   return (
-    <div className={cn('space-y-1.5', className)}>
+    <div className={cn('space-y-2', className)}>
       <div className="flex items-baseline justify-between gap-3">
-        <label htmlFor={id} className="block text-sm font-medium text-ink-800">
+        <label htmlFor={id} className="block text-meta font-medium text-ink-800 sm:text-sm">
           {label}
           {required ? (
             <span className="ml-0.5 text-danger-500" aria-hidden="true">
@@ -47,13 +47,13 @@ export function Field({
       {children({ id, 'aria-describedby': describedBy, 'aria-invalid': Boolean(error) })}
 
       {hint && !error ? (
-        <p id={hintId} className="text-xs text-ink-500">
+        <p id={hintId} className="text-xs leading-normal text-ink-500">
           {hint}
         </p>
       ) : null}
 
       {error ? (
-        <p id={errorId} role="alert" className="text-xs font-medium text-danger-500">
+        <p id={errorId} role="alert" className="text-xs leading-normal font-medium text-danger-500">
           {error}
         </p>
       ) : null}

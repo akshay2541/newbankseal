@@ -17,7 +17,7 @@ export function PremiumCard() {
     <div className="rounded-card bg-brand-600 px-6 py-7 text-center text-white">
       <RosetteIcon />
 
-      <h2 className="mt-4 font-display text-2xl leading-tight font-bold">Become premium member</h2>
+      <h2 className="mt-4 font-display text-h3 font-bold">Become premium member</h2>
 
       <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-white/90">
         To view complete address, auction notice &amp; authorize person contact details
@@ -25,14 +25,14 @@ export function PremiumCard() {
 
       <Link
         href="/pricing"
-        className="mt-5 inline-flex h-12 items-center gap-2 rounded-btn bg-cta px-6 text-base font-semibold text-white transition-colors hover:bg-cta-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="mt-5 inline-flex h-control-lg items-center gap-2 rounded-btn bg-cta px-6 text-base font-semibold text-white transition-colors hover:bg-cta-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
         Get Premium
         <UnlockKeyIcon />
       </Link>
 
       <p className="mt-5">
-        <Link href="/sign-up" className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold text-white underline underline-offset-4">
+        <Link href="/sign-up" className="inline-flex min-h-control items-center text-body font-semibold text-white underline underline-offset-4">
           Register Now
         </Link>
       </p>
@@ -41,13 +41,13 @@ export function PremiumCard() {
         &amp; Claim <span className="font-bold text-white">3 Free</span> Auction Details!
       </p>
 
-      <p className="mt-5 text-[0.8125rem] text-white/70">If you are already a premium member</p>
+      <p className="mt-5 text-meta text-white/70">If you are already a premium member</p>
 
       <p className="mt-1 flex items-center justify-center gap-5">
-        <Link href="/sign-in" className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold text-white underline underline-offset-4">
+        <Link href="/sign-in" className="inline-flex min-h-control items-center text-body font-semibold text-white underline underline-offset-4">
           Login
         </Link>
-        <Link href="/sign-up" className="inline-flex min-h-11 items-center text-[0.9375rem] font-semibold text-white underline underline-offset-4">
+        <Link href="/sign-up" className="inline-flex min-h-control items-center text-body font-semibold text-white underline underline-offset-4">
           Register
         </Link>
       </p>

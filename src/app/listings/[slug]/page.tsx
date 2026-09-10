@@ -66,21 +66,21 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
   const shareUrl = `${clientEnv.NEXT_PUBLIC_APP_URL}/listings/${listing.slug}`;
 
   return (
-    <Container className="py-6">
+    <Container className="py-block">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs">
-          <Link href="/" className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-600 hover:bg-ink-200">
+          <Link href="/" className="inline-flex h-control-sm items-center rounded-md bg-ink-100 px-3 font-medium text-ink-600 hover:bg-ink-200">
             Home
           </Link>
           <ChevronRight aria-hidden="true" className="size-3.5 text-ink-400" />
           <Link
             href={`/explore?city=${encodeURIComponent(listing.citySlug)}`}
-            className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-600 hover:bg-ink-200"
+            className="inline-flex h-control-sm items-center rounded-md bg-ink-100 px-3 font-medium text-ink-600 hover:bg-ink-200"
           >
             {listing.cityName}
           </Link>
           <ChevronRight aria-hidden="true" className="size-3.5 text-ink-400" />
-          <span aria-current="page" className="inline-flex h-11 items-center rounded-md bg-ink-100 px-3 sm:h-9 font-medium text-ink-700">
+          <span aria-current="page" className="inline-flex h-control-sm items-center rounded-md bg-ink-100 px-3 font-medium text-ink-700">
             Product Details
           </span>
         </nav>
@@ -97,12 +97,12 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
 
       <div className="mt-5 flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
         <div className="min-w-0">
-          <h1 className="font-display text-xl font-bold tracking-tight text-brand-600 sm:text-2xl">
+          <h1 className="font-display text-h4 font-bold tracking-tight text-brand-600">
             {listing.title}
           </h1>
           <Link
             href={`/banks/${encodeURIComponent(listing.bankSlug)}`}
-            className="mt-1 inline-flex min-h-11 items-center gap-2 text-sm text-brand-600 hover:underline sm:mt-2 sm:min-h-0"
+            className="mt-1 inline-flex min-h-control-sm items-center gap-2 text-sm text-brand-600 hover:underline sm:mt-2"
           >
             <BankLogo name={listing.bankName} slug={listing.bankSlug} logoUrl={listing.bankLogoUrl} />
             {listing.bankName}
@@ -121,7 +121,7 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
         </div>
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+      <div className="mt-block grid gap-block lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
         <div className="min-w-0 space-y-4">
           <LockedCard title="Borrower Name" field={listing.borrowerName} />
           <OverviewCard listing={listing} />
@@ -146,8 +146,8 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <aside className="min-w-0 space-y-4">
-          <Card className="p-5">
-            <h2 className="text-base font-semibold text-ink-900">Share</h2>
+          <Card className="p-card">
+            <h2 className="text-h5 font-semibold text-ink-900">Share</h2>
             <ul className="mt-4 flex items-center gap-4">
               {shareTargets(shareUrl).map((target) => (
                 <li key={target.label}>
@@ -174,7 +174,7 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
         </aside>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-section">
         <SimilarListings
           listings={similar}
           viewAllHref={`/explore?city=${encodeURIComponent(listing.citySlug)}`}
@@ -199,7 +199,7 @@ function HeaderAction({ label, icon, text }: { label: string; icon: ActionIconKe
     <button
       type="button"
       aria-label={label}
-      className="inline-flex h-11 items-center gap-1.5 rounded-btn border border-border-subtle bg-surface px-4 text-xs font-medium text-ink-700 transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 sm:h-9 sm:px-3.5"
+      className="inline-flex h-control-sm items-center gap-1.5 rounded-btn border border-border-subtle bg-surface px-4 text-xs font-medium text-ink-700 transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 sm:px-3.5"
     >
       <ActionIcon icon={icon} className="size-3.5" />
       {text}

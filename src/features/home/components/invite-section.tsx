@@ -26,7 +26,7 @@ const COVERAGE: ReadonlyArray<MapMarker & { listings: number }> = [
 
 export function InviteSection() {
   return (
-    <section className="relative isolate mt-16 overflow-hidden pb-16" aria-labelledby="invite-heading">
+    <section className="relative isolate mt-section-lg overflow-hidden pb-section-lg" aria-labelledby="invite-heading">
       {/*
         Skyline backdrop. The source photograph is a colour sunset; the design wants a
         grey haze rising into dark silhouettes, so it is desaturated and re-graded here
@@ -82,18 +82,18 @@ export function InviteSection() {
           <div>
             <h2
               id="invite-heading"
-              className="max-w-[30rem] font-display text-2xl leading-[1.3] font-bold tracking-tight text-ink-900 sm:text-3xl lg:text-[2.5rem]"
+              className="max-w-[30rem] font-display text-h1 font-bold tracking-tight text-ink-900"
             >
               We&apos;d Like to Personally Invite You to Explore a New Opportunity with{' '}
               <span className="text-brand-600">{siteConfig.wordmark}</span>
             </h2>
 
-            <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-ink-500">
+            <p className="mt-5 max-w-md text-body leading-relaxed text-ink-500">
               Whether you&apos;re looking for a property, vehicle, or other bank-repossessed asset, discover verified
               listings and find the right opportunity with ease.
             </p>
 
-            <Button asChild variant="primary" className="mt-7 h-13 px-7 text-[0.9375rem]">
+            <Button asChild variant="primary" className="mt-block">
               <Link href="/explore">Explore {siteConfig.wordmark} Listed Assets</Link>
             </Button>
           </div>

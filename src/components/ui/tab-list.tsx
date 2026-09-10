@@ -100,7 +100,7 @@ export function TabList({
             onClick={() => onSelect(tab.key)}
             onKeyDown={onKeyDown}
             className={cn(
-              'shrink-0 rounded-btn inline-flex h-11 items-center px-4 sm:h-10 text-sm font-medium whitespace-nowrap transition-colors',
+              'shrink-0 rounded-btn inline-flex h-control items-center px-4 text-meta font-medium whitespace-nowrap transition-colors',
               selected && 'bg-brand-600 text-white',
               !selected &&
                 variant === 'soft' &&

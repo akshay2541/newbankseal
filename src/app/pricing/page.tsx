@@ -17,9 +17,9 @@ export const metadata: Metadata = {
  */
 export default function PricingPage() {
   return (
-    <Container className="py-14 sm:py-16">
+    <Container className="py-section-lg">
       <div className="mx-auto max-w-2xl text-center">
-        <h1 className="font-display text-3xl font-bold tracking-tight text-ink-900 sm:text-[2.5rem]">
+        <h1 className="font-display text-h1 font-bold tracking-tight text-ink-900">
           Ready to get started?
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink-500">
@@ -28,7 +28,7 @@ export default function PricingPage() {
         </p>
       </div>
 
-      <div className="mt-10 sm:mt-12">
+      <div className="mt-block">
         <PlanSelector />
       </div>
     </Container>

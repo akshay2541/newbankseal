@@ -24,7 +24,7 @@ export function LockedCard({
   const unlocked = !field.locked;
 
   return (
-    <Card className="p-5">
+    <Card className="p-card">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <h2 className="text-sm font-semibold text-ink-900">{title}</h2>
@@ -45,7 +45,7 @@ export function LockedCard({
           action ?? (
             <Link
               href="/pricing"
-              className="inline-flex h-11 shrink-0 items-center gap-1.5 rounded-btn border border-border-strong bg-surface px-4 text-xs font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
+              className="inline-flex h-control shrink-0 items-center gap-1.5 rounded-btn border border-border-strong bg-surface px-4 text-xs font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
             >
               Unlock
               <Lock className="size-3.5" aria-hidden="true" />

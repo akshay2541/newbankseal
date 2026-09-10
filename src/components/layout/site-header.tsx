@@ -26,7 +26,7 @@ export async function SiteHeader() {
   // little and cost that.
   return (
     <header className="sticky top-0 z-50 border-b border-border-subtle bg-surface">
-      <Container className="flex h-18 items-center justify-between gap-6 lg:h-header">
+      <Container className="flex h-18 items-center justify-between gap-4 sm:gap-6 lg:h-header">
         <Wordmark />
 
         <MainNav items={siteConfig.primaryNav} className="hidden lg:flex" />
@@ -36,10 +36,10 @@ export async function SiteHeader() {
             <UserMenu name={session.user.fullName} email={session.user.email} role={session.user.role} />
           ) : (
             <div className="hidden items-center gap-3 sm:flex">
-              <Button asChild variant="primary" className="h-11 px-5 text-[0.9375rem]">
+              <Button asChild variant="primary">
                 <Link href="/sign-up">Sign up</Link>
               </Button>
-              <Button asChild variant="soft" className="h-11 px-5 text-[0.9375rem]">
+              <Button asChild variant="soft">
                 <Link href="/sign-in">Sign in</Link>
               </Button>
             </div>

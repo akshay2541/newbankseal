@@ -23,8 +23,8 @@ export function ExploreSidebar({
       <ShareCard url={shareUrl} />
 
       {localities.length > 0 ? (
-        <Card className="p-5">
-          <h2 className="text-[0.9375rem] font-bold text-ink-900">
+        <Card className="p-card">
+          <h2 className="text-body font-bold text-ink-900">
             Top Localities in {cityName ?? 'These'} Auctions
           </h2>
 
@@ -69,8 +69,8 @@ function ShareCard({ url }: { url: string }) {
   ];
 
   return (
-    <Card className="p-5">
-      <h2 className="text-[0.9375rem] font-bold text-ink-900">Share</h2>
+    <Card className="p-card">
+      <h2 className="text-body font-bold text-ink-900">Share</h2>
 
       <ul className="mt-4 flex items-center gap-4">
         {targets.map((target) => (

@@ -24,7 +24,7 @@ export function PasswordInput({ className, ...props }: InputHTMLAttributes<HTMLI
         onClick={() => setVisible((value) => !value)}
         aria-label={visible ? 'Hide password' : 'Show password'}
         aria-pressed={visible}
-        className="absolute top-1/2 right-1 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-btn text-ink-400 transition-colors hover:text-ink-700 sm:right-1.5 sm:size-9"
+        className="absolute top-1/2 right-1 inline-flex size-control-sm -translate-y-1/2 items-center justify-center rounded-btn text-ink-400 transition-colors hover:text-ink-700 sm:right-1.5"
       >
         {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
       </button>

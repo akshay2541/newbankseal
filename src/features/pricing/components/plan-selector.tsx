@@ -27,7 +27,7 @@ export function PlanSelector() {
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:items-start">
       <div className="min-w-0">
-        <div className="rounded-card border border-border-subtle bg-surface p-6">
+        <div className="rounded-card border border-border-subtle bg-surface p-card">
           <h2 className="sr-only">What every plan includes</h2>
 
           <ul className="space-y-4">
@@ -39,7 +39,7 @@ export function PlanSelector() {
                 >
                   <Check className="size-3" strokeWidth={3} />
                 </span>
-                <span className="text-[0.9375rem] text-ink-800">{feature}</span>
+                <span className="text-body text-ink-800">{feature}</span>
               </li>
             ))}
           </ul>
@@ -124,7 +124,7 @@ function PlanRow({
         <span className="min-w-0">
           <span className="block text-xl font-bold whitespace-nowrap text-ink-900">{plan.name}</span>
           {percent > 0 ? (
-            <span className="mt-2 inline-flex items-center rounded-md bg-brand-50 px-2.5 py-1 text-[0.8125rem] font-medium whitespace-nowrap text-brand-600">
+            <span className="mt-2 inline-flex items-center rounded-md bg-brand-50 px-2.5 py-1 text-meta font-medium whitespace-nowrap text-brand-600">
               {percent}% Savings
             </span>
           ) : null}

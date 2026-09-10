@@ -20,15 +20,15 @@ export function SimilarListings({ listings, viewAllHref }: { listings: ListingCa
   if (listings.length === 0) return null;
 
   return (
-    <Card className="p-5" aria-labelledby="similar-heading">
+    <Card className="p-card" aria-labelledby="similar-heading">
       <div className="mb-4 flex items-center justify-between gap-4">
-        <h2 id="similar-heading" className="text-[0.9375rem] font-bold text-ink-900">
+        <h2 id="similar-heading" className="text-body font-bold text-ink-900">
           Similar Auction Properties
         </h2>
 
         <Link
           href={viewAllHref}
-          className="inline-flex h-11 shrink-0 items-center rounded-btn bg-brand-50 px-4 text-[0.8125rem] font-medium text-brand-600 transition-colors hover:bg-brand-100 sm:h-9"
+          className="inline-flex h-control-sm shrink-0 items-center rounded-btn bg-brand-50 px-4 text-meta font-medium text-brand-600 transition-colors hover:bg-brand-100"
         >
           View All
         </Link>
@@ -52,14 +52,14 @@ function SimilarCard({ listing }: { listing: ListingCard }) {
 
   return (
     <article className="rail-item relative flex w-[19rem] flex-col rounded-xl bg-ink-50 p-4 sm:w-[21rem]">
-      <h3 className="truncate text-[0.9375rem] font-semibold text-brand-600">
+      <h3 className="truncate text-body font-semibold text-brand-600">
         {/* Stretched link: one target for the whole card, one tab stop. */}
         <Link href={href} className="hover:underline after:absolute after:inset-0 after:content-['']">
           {listing.title}
         </Link>
       </h3>
 
-      <p className="mt-2 flex items-center gap-1.5 text-[0.8125rem] text-ink-500">
+      <p className="mt-2 flex items-center gap-1.5 text-meta text-ink-500">
         <BankLogo
           name={listing.bankName}
           slug={listing.bankName}
@@ -69,14 +69,14 @@ function SimilarCard({ listing }: { listing: ListingCard }) {
         <span className="truncate">{listing.bankName}</span>
       </p>
 
-      <p className="mt-2.5 text-[0.8125rem] text-ink-600">{meta}</p>
-      <p className="mt-1 text-[0.8125rem] text-ink-600">{POSSESSION_LABEL[listing.possessionType]}</p>
+      <p className="mt-2.5 text-meta text-ink-600">{meta}</p>
+      <p className="mt-1 text-meta text-ink-600">{POSSESSION_LABEL[listing.possessionType]}</p>
 
       <div className="mt-4 flex items-center justify-between gap-3">
         <p className="text-base font-bold text-success-500">{formatInr(listing.reservePriceInr)}</p>
 
         {/* Above the stretched link so it stays its own target. */}
-        <Button asChild variant="dark" size="sm" className="relative z-10 h-11 px-4 text-[0.8125rem] sm:h-9">
+        <Button asChild variant="dark" size="sm" className="relative z-10">
           <Link href={href}>View Auction</Link>
         </Button>
       </div>

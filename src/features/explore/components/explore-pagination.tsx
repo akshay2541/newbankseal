@@ -43,7 +43,7 @@ export function ExplorePagination({
             aria-current={entry === page ? 'page' : undefined}
             aria-label={`Page ${entry}`}
             className={cn(
-              'inline-flex size-11 items-center justify-center rounded-lg text-sm font-medium transition-colors sm:size-9',
+              'inline-flex size-control-sm items-center justify-center rounded-lg text-sm font-medium transition-colors',
               entry === page
                 ? 'bg-brand-600 text-white'
                 : 'border border-border-subtle bg-surface text-ink-700 hover:bg-ink-50',
@@ -96,7 +96,7 @@ function Step({
   icon: typeof ChevronLeft;
 }) {
   const classes =
-    'inline-flex size-11 items-center justify-center rounded-lg border border-border-subtle text-ink-600 sm:size-9';
+    'inline-flex size-control-sm items-center justify-center rounded-lg border border-border-subtle text-ink-600';
 
   if (disabled) {
     // Rendered inert rather than omitted, so the control row doesn't reflow at the ends.

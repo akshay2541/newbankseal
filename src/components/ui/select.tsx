@@ -34,7 +34,7 @@ const SelectTrigger = forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex h-11 w-full items-center justify-between gap-2 rounded-btn border border-border-strong bg-surface px-3.5 text-sm text-ink-900',
+      'flex h-control w-full items-center justify-between gap-2 rounded-btn border border-border-strong bg-surface px-3.5 text-sm text-ink-900',
       'transition-colors focus:border-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/20',
       'data-[placeholder]:text-ink-400',
       'disabled:cursor-not-allowed disabled:bg-ink-50 disabled:text-ink-400',

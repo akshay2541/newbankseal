@@ -24,34 +24,34 @@ export default async function DashboardPage() {
   const canAudit = hasPermission(session.user.role, 'audit:read');
 
   return (
-    <Container className="py-10">
-      <h1 className="font-display text-2xl font-bold tracking-tight text-ink-900">
+    <Container className="py-section">
+      <h1 className="font-display text-h2 font-bold tracking-tight text-ink-900">
         Welcome back, {session.user.fullName.split(' ')[0]}
       </h1>
       <p className="mt-2 text-sm text-ink-500">
         Signed in as <span className="font-medium text-ink-700">{session.user.email}</span>
       </p>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <Card className="p-5">
+      <div className="mt-block grid gap-gap sm:grid-cols-2 lg:grid-cols-3">
+        <Card className="p-card">
           <h2 className="text-sm font-semibold text-ink-900">Watchlist</h2>
           <p className="mt-1.5 text-xs text-ink-500">Auctions you are tracking will appear here.</p>
         </Card>
 
-        <Card className="p-5">
+        <Card className="p-card">
           <h2 className="text-sm font-semibold text-ink-900">Your enquiries</h2>
           <p className="mt-1.5 text-xs text-ink-500">Interest you have expressed, and the bank&apos;s responses.</p>
         </Card>
 
         {canPublish ? (
-          <Card className="p-5">
+          <Card className="p-card">
             <h2 className="text-sm font-semibold text-ink-900">Listing review queue</h2>
             <p className="mt-1.5 text-xs text-ink-500">Submitted listings awaiting your approval.</p>
           </Card>
         ) : null}
 
         {canAudit ? (
-          <Card className="p-5">
+          <Card className="p-card">
             <h2 className="text-sm font-semibold text-ink-900">Audit log</h2>
             <p className="mt-1.5 text-xs text-ink-500">Security-sensitive actions across the platform.</p>
           </Card>

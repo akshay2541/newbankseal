@@ -24,8 +24,8 @@ export function EmiCalculator({ reservePriceInr, emdAmountInr }: { reservePriceI
   const monthly = useMemo(() => calculateEmi(loanAmount, ratePercent, years), [loanAmount, ratePercent, years]);
 
   return (
-    <Card className="p-5">
-      <h2 className="text-base font-semibold text-ink-900">EMI Calculator</h2>
+    <Card className="p-card">
+      <h2 className="text-h5 font-semibold text-ink-900">EMI Calculator</h2>
 
       <div className="mt-4 space-y-4">
         <div>
@@ -41,7 +41,7 @@ export function EmiCalculator({ reservePriceInr, emdAmountInr }: { reservePriceI
             step={10_000}
             value={loanAmount}
             onChange={(event) => setLoanAmount(clamp(Number(event.target.value), 0, 1_000_000_000))}
-            className="mt-1.5 h-11 w-full rounded-btn border border-border-strong bg-surface px-3.5 text-sm tabular-nums text-ink-900 focus:border-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/20"
+            className="mt-1.5 h-control w-full rounded-btn border border-border-strong bg-surface px-3.5 text-sm tabular-nums text-ink-900 focus:border-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/20"
           />
           <p className="mt-1 text-2xs text-ink-400">
             Default = reserve ({formatInr(reservePriceInr)}) − EMD ({formatInr(emdAmountInr)})

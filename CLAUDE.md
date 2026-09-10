@@ -32,6 +32,23 @@ npm run db:seed        # idempotent
 - **Money is `bigint` paise** in the database, converted to rupees only at the DTO
   boundary. Never store a float.
 - **No raw hex in components.** Add a token to `@theme` in `src/app/globals.css`.
+- **Type and spacing come from the scale, not from the call site.** Both live in
+  `@theme` and both are fluid, interpolating between a 375px and a 1280px viewport, so
+  a layout adapts without a `sm:`/`lg:` ladder per element.
+  - Headings: `text-hero` → `text-h5`. Never `text-2xl sm:text-3xl lg:text-[2.5rem]`.
+  - Reading sizes are fixed and do not shrink on a phone: `text-body` (15px) and
+    `text-meta` (13px) fill the gaps Tailwind's scale leaves.
+  - Rhythm: `section-lg` > `section` > `block` > `card` > `gap`, as `py-section`,
+    `mt-block`, `p-card`, `gap-gap`. `px-gutter` is the page column's padding.
+  - Controls: `h-control` (44px tapped → 40px clicked), `h-control-sm`, `h-control-lg`.
+    These run the opposite way to the type scale. Let `Button`, `Input` and `Chip`
+    apply them; do not restate a height at the call site.
+  - Tailwind's numeric scale is still right for small fixed values — the gap inside a
+    row, the space between a label and its field.
+- **New `--text-*` or `--spacing-*` tokens must also be listed in `src/lib/cn.ts`.**
+  tailwind-merge cannot read the theme: an unregistered `text-*` is taken for a colour
+  and silently dropped, and an unregistered spacing class stops conflicting with the
+  utility it is meant to override.
 - **Dropdowns/menus go through `src/components/ui/select.tsx`** (Radix Select, styled
   with our tokens). Don't hand-roll a listbox — typeahead, roving focus and collision
   positioning are why the library is there. Compose it like `category-select.tsx`.

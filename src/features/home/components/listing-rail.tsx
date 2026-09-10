@@ -29,7 +29,7 @@ export function ListingRail({
   if (listings.length === 0) return null;
 
   return (
-    <Container as="section" className="pt-12" aria-labelledby={`${id}-heading`}>
+    <Container as="section" className="pt-section" aria-labelledby={`${id}-heading`}>
       <SectionHeading id={`${id}-heading`} lead={lead} highlight={highlight} viewAllHref={viewAllHref} />
 
       <Rail ariaLabel={`${lead} ${highlight ?? ''}`.trim()}>

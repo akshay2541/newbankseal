@@ -72,8 +72,8 @@ export function AskPanel({
   }
 
   return (
-    <Card className="p-5">
-      <h2 className="text-base font-semibold text-ink-900">Ask about this property</h2>
+    <Card className="p-card">
+      <h2 className="text-h5 font-semibold text-ink-900">Ask about this property</h2>
       <p className="mt-1.5 text-xs leading-relaxed text-ink-500">
         Answers come from this listing&apos;s published details only. For bidding, title or legal decisions, talk to a
         property lawyer.
@@ -108,7 +108,7 @@ export function AskPanel({
                 type="button"
                 onClick={() => ask(suggestion)}
                 disabled={pending}
-                className="min-h-11 w-full rounded-xl border border-border-subtle bg-surface px-3.5 py-3 text-left text-xs text-ink-700 transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 disabled:opacity-60"
+                className="min-h-control w-full rounded-xl border border-border-subtle bg-surface px-3.5 py-3 text-left text-xs text-ink-700 transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 disabled:opacity-60"
               >
                 {suggestion}
               </button>
@@ -135,13 +135,13 @@ export function AskPanel({
           disabled={pending || exhausted}
           maxLength={300}
           placeholder={exhausted ? 'Question limit reached' : 'Ask a question about this listing…'}
-          className="h-11 min-w-0 flex-1 rounded-xl border border-border-subtle bg-surface px-3.5 text-xs text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/20 disabled:bg-ink-50"
+          className="h-control min-w-0 flex-1 rounded-xl border border-border-subtle bg-surface px-3.5 text-xs text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/20 disabled:bg-ink-50"
         />
         <button
           type="submit"
           disabled={pending || exhausted || draft.trim().length < 3}
           aria-label="Send question"
-          className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-600 text-white transition-colors hover:bg-brand-700 disabled:opacity-40"
+          className="inline-flex size-control shrink-0 items-center justify-center rounded-xl bg-brand-600 text-white transition-colors hover:bg-brand-700 disabled:opacity-40"
         >
           <SendHorizontal className="size-4" />
         </button>

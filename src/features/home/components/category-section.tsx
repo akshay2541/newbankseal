@@ -27,10 +27,10 @@ export function CategorySection({
   activeBankSlug?: string;
 }) {
   return (
-    <Container as="section" className="pt-12" aria-labelledby="category-auctions-heading">
+    <Container as="section" className="pt-section" aria-labelledby="category-auctions-heading">
       <SectionHeading id="category-auctions-heading" lead="Category" highlight="Auctions" className="mb-6" />
 
-      <ul className="grid gap-x-6 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid gap-x-6 gap-y-block sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((category) => (
           <li key={category.slug}>
             <Link
@@ -41,7 +41,7 @@ export function CategorySection({
 
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm text-ink-600">{category.name}</span>
-                <span className="mt-0.5 block text-[0.9375rem] font-bold text-ink-900">
+                <span className="mt-0.5 block text-body font-bold text-ink-900">
                   {formatCount(category.listingCount)}
                 </span>
               </span>
@@ -57,10 +57,12 @@ export function CategorySection({
         ))}
       </ul>
 
-      <h3 className="mt-16 text-xl font-bold tracking-tight text-ink-900">Popular Bank e-Auction Properties</h3>
+      <h3 className="mt-section font-display text-h4 font-bold tracking-tight text-ink-900">
+        Popular Bank e-Auction Properties
+      </h3>
       <hr className="mt-4 border-t border-border-subtle" />
 
-      <ul className="mt-5 flex flex-wrap gap-4">
+      <ul className="mt-block flex flex-wrap gap-gap">
         {banks.map((bank) => {
           const active = bank.slug === activeBankSlug;
 
@@ -70,7 +72,7 @@ export function CategorySection({
                 href={`/banks/${encodeURIComponent(bank.slug)}`}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'inline-flex h-13 items-center gap-2.5 rounded-xl border px-5 text-[0.9375rem] transition-colors',
+                  'inline-flex h-control items-center gap-2 rounded-xl border px-3.5 text-meta transition-colors sm:gap-2.5 sm:px-5 sm:text-body',
                   active
                     ? 'border-brand-600 bg-surface font-medium text-ink-900'
                     : 'border-transparent bg-brand-50 text-ink-700 hover:border-brand-200 hover:bg-brand-100',

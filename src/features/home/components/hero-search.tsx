@@ -37,7 +37,7 @@ const POPULAR_SEARCHES = [
  */
 export function HeroSearch({ categories }: { categories: CategoryFacet[] }) {
   return (
-    <Container className="pt-6">
+    <Container className="pt-block">
       <section className="relative isolate overflow-hidden rounded-hero bg-ink-950">
         <Image
           src={HERO_IMAGE}
@@ -58,18 +58,18 @@ export function HeroSearch({ categories }: { categories: CategoryFacet[] }) {
         {/* Slight vertical weighting so the white card separates from the sky. */}
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink-950/55 to-transparent" />
 
-        <div className="relative px-5 pt-10 pb-8 sm:px-8 sm:pt-12 sm:pb-9 lg:px-12 lg:pt-16 lg:pb-8">
-          <h1 className="font-display text-3xl leading-[1.12] font-bold tracking-tight text-white sm:text-4xl lg:text-[3rem]">
+        <div className="relative px-card py-section sm:px-8 lg:px-12 lg:pt-16 lg:pb-8">
+          <h1 className="font-display text-hero font-bold tracking-tight text-white">
             <span className="block text-brand-500">Surat&apos;s bank</span>
             Auction Marketplace
           </h1>
 
-          <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/80 lg:text-[0.9375rem]">
+          <p className="mt-4 max-w-lg text-body leading-relaxed text-white/80">
             Verified bank-seized and SARFAESI auction properties. Reserve prices, EMD details, auction dates updated
             daily.
           </p>
 
-          <div className="mt-7 rounded-panel bg-white p-3 shadow-float sm:p-6">
+          <div className="mt-block rounded-panel bg-white p-3 shadow-float sm:p-6">
             <form action="/explore" method="get" role="search">
               {/* Inner tray: on mobile the controls stack, so the tray drops its fixed
                   height and each control keeps a comfortable touch target. */}
@@ -93,7 +93,7 @@ export function HeroSearch({ categories }: { categories: CategoryFacet[] }) {
                     maxLength={120}
                     autoComplete="off"
                     placeholder="Search for bank, cars &amp; properties…"
-                    className="h-12 w-full rounded-xl bg-transparent px-4 text-[0.9375rem] text-ink-900 placeholder:text-ink-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/30"
+                    className="h-12 w-full rounded-xl bg-transparent px-4 text-body text-ink-900 placeholder:text-ink-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/30"
                   />
                 </div>
 
@@ -108,17 +108,26 @@ export function HeroSearch({ categories }: { categories: CategoryFacet[] }) {
               </div>
             </form>
 
-            <div className="mt-5 flex flex-wrap items-center gap-2.5 px-1 sm:gap-3">
-              <span className="mr-1 text-[0.9375rem] font-semibold text-ink-900">Popular :</span>
-              {POPULAR_SEARCHES.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="inline-flex h-11 items-center rounded-btn bg-ink-100 px-4 text-[0.8125rem] font-medium text-ink-700 transition-colors hover:bg-brand-50 hover:text-brand-700 sm:h-10"
-                >
-                  {item.label}
-                </Link>
-              ))}
+            {/*
+              Wrapped above `sm`, scrolled below it. These labels are long enough that
+              on a phone every one of them takes a line of its own, turning a single
+              row into four and pushing the rest of the page down by 200px. `sm:contents`
+              dissolves the scroller at the breakpoint so the chips rejoin the wrap flow
+              rather than being duplicated for each layout.
+            */}
+            <div className="mt-5 flex items-center gap-2.5 px-1 sm:flex-wrap sm:gap-3">
+              <span className="shrink-0 text-body font-semibold text-ink-900">Popular :</span>
+              <div className="no-scrollbar -mx-1 flex min-w-0 flex-1 gap-2 overflow-x-auto px-1 sm:contents">
+                {POPULAR_SEARCHES.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="inline-flex h-control-sm shrink-0 items-center rounded-btn bg-ink-100 px-4 text-meta font-medium text-ink-700 transition-colors hover:bg-brand-50 hover:text-brand-700"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>

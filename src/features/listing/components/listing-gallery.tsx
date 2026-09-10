@@ -36,7 +36,7 @@ export function ListingGallery({ images, title }: { images: ListingImageItem[]; 
         <button
           type="button"
           aria-label="Expand photograph"
-          className="absolute right-3 bottom-3 inline-flex size-11 items-center justify-center rounded-full bg-white/90 text-ink-700 shadow-card backdrop-blur transition-colors hover:bg-white"
+          className="absolute right-3 bottom-3 inline-flex size-control items-center justify-center rounded-full bg-white/90 text-ink-700 shadow-card backdrop-blur transition-colors hover:bg-white"
         >
           <Expand className="size-4" />
         </button>

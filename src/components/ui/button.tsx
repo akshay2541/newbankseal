@@ -7,6 +7,12 @@ import { cn } from '@/lib/cn';
  * The single button primitive. Variants map 1:1 to the treatments in the design:
  * solid brand (Sign up / Explore), soft brand chip (active filter pill), outline
  * (Sign in), dark solid (View Auction), and ghost (nav links).
+ *
+ * Sizes carry their own responsive height through the `control` spacing tokens: 44px
+ * where the button is tapped, easing down to the design's 40px (36px for `sm`) where
+ * it is clicked. Every call site used to restate this by hand and no two agreed —
+ * `h-11 sm:h-10`, `h-11 sm:h-9`, `h-11 sm:h-8`, `h-12`, `h-13` — which is how a phone
+ * ended up with three different secondary-button heights on one screen.
  */
 const buttonVariants = cva(
   [
@@ -27,10 +33,10 @@ const buttonVariants = cva(
         link: 'text-brand-600 underline-offset-4 hover:underline p-0 h-auto',
       },
       size: {
-        sm: 'h-8 rounded-btn px-3 text-xs [&_svg]:size-3.5',
-        md: 'h-10 rounded-btn px-4 text-sm [&_svg]:size-4',
-        lg: 'h-12 rounded-btn px-6 text-sm [&_svg]:size-4',
-        icon: 'size-9 rounded-full [&_svg]:size-4',
+        sm: 'h-control-sm rounded-btn px-4 text-meta [&_svg]:size-3.5',
+        md: 'h-control rounded-btn px-5 text-body [&_svg]:size-4',
+        lg: 'h-control-lg rounded-btn px-6 text-body [&_svg]:size-4',
+        icon: 'size-control-sm rounded-full [&_svg]:size-4',
       },
     },
     defaultVariants: { variant: 'primary', size: 'md' },

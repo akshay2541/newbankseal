@@ -68,7 +68,7 @@ export function LocalityListingRail({
   const selectedKey = tabs.some((tab) => tab.key === activeKey) ? activeKey : ALL_KEY;
 
   return (
-    <Container as="section" className="pt-12" aria-labelledby={`${id}-heading`}>
+    <Container as="section" className="pt-section" aria-labelledby={`${id}-heading`}>
       <SectionHeading id={`${id}-heading`} lead={lead} highlight={highlight} viewAllHref={viewAllHref} />
 
       {tabs.length > 1 ? (

@@ -61,8 +61,8 @@ export function NearbyPlaces({
   if (places.length === 0) return null;
 
   return (
-    <Card className="p-5">
-      <h2 className="text-base font-semibold text-ink-900">Nearby Places</h2>
+    <Card className="p-card">
+      <h2 className="text-h5 font-semibold text-ink-900">Nearby Places</h2>
 
       <div role="tablist" aria-label="Nearby place categories" className="no-scrollbar mt-4 flex gap-2.5 overflow-x-auto pb-1">
         {available.map((category) => {
@@ -78,7 +78,7 @@ export function NearbyPlaces({
                 setSelectedId(null);
               }}
               className={cn(
-                'inline-flex h-11 shrink-0 items-center rounded-lg border px-4 text-[0.8125rem] font-medium transition-colors',
+                'inline-flex h-control shrink-0 items-center rounded-lg border px-4 text-meta font-medium transition-colors',
                 selected
                   ? 'border-brand-600 bg-brand-600 text-white'
                   : 'border-border-subtle bg-surface text-ink-700 hover:border-brand-200 hover:bg-brand-50',
