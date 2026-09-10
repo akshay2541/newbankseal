@@ -12,6 +12,7 @@ export function Field({
   hint,
   error,
   required,
+  action,
   className,
   children,
 }: {
@@ -19,6 +20,8 @@ export function Field({
   hint?: string;
   error?: string;
   required?: boolean;
+  /** Optional control on the label row — a "Forgot password?" link, for instance. */
+  action?: ReactNode;
   className?: string;
   children: (props: { id: string; 'aria-describedby'?: string; 'aria-invalid'?: boolean }) => ReactNode;
 }) {
@@ -29,14 +32,17 @@ export function Field({
 
   return (
     <div className={cn('space-y-1.5', className)}>
-      <label htmlFor={id} className="block text-sm font-medium text-ink-800">
-        {label}
-        {required ? (
-          <span className="ml-0.5 text-danger-500" aria-hidden="true">
-            *
-          </span>
-        ) : null}
-      </label>
+      <div className="flex items-baseline justify-between gap-3">
+        <label htmlFor={id} className="block text-sm font-medium text-ink-800">
+          {label}
+          {required ? (
+            <span className="ml-0.5 text-danger-500" aria-hidden="true">
+              *
+            </span>
+          ) : null}
+        </label>
+        {action}
+      </div>
 
       {children({ id, 'aria-describedby': describedBy, 'aria-invalid': Boolean(error) })}
 

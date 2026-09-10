@@ -2,11 +2,13 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { ShieldCheck } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Field } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { apiFetch } from '@/lib/csrf-client';
+import { siteConfig } from '@/lib/site-config';
 import { isSafeRedirectPath, signInSchema } from '@/lib/validation/auth';
 import { FormAlert } from './form-alert';
 import { PasswordInput } from './password-input';
@@ -72,14 +74,22 @@ export function SignInForm({ next }: { next?: string }) {
 
   return (
     <>
-      <header className="mb-8">
-        <h1 className="font-display text-2xl font-bold tracking-tight text-ink-900">Welcome back</h1>
-        <p className="mt-2 text-sm text-ink-500">Sign in to track auctions and manage your watchlist.</p>
+      <header className="mb-7">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-2.5 py-1 text-2xs font-semibold tracking-wide text-brand-700 uppercase">
+          <ShieldCheck className="size-3" aria-hidden="true" />
+          Secure sign in
+        </span>
+        <h1 className="mt-3.5 font-display text-[1.75rem] leading-tight font-bold tracking-tight text-ink-900">
+          Welcome back
+        </h1>
+        <p className="mt-2 text-sm leading-relaxed text-ink-500">
+          Sign in to track auctions and manage your watchlist.
+        </p>
       </header>
 
       <FormAlert message={formError} />
 
-      <form onSubmit={onSubmit} noValidate className="space-y-4">
+      <form onSubmit={onSubmit} noValidate className="space-y-5">
         <Field label="Email address" error={fieldErrors.email?.[0]} required>
           {(props) => (
             <Input
@@ -95,24 +105,32 @@ export function SignInForm({ next }: { next?: string }) {
           )}
         </Field>
 
-        <Field label="Password" error={fieldErrors.password?.[0]} required>
+        <Field
+          label="Password"
+          error={fieldErrors.password?.[0]}
+          required
+          // On the label row rather than under the field: it belongs to the password,
+          // and below it competed with the submit button for the same glance.
+          action={
+            <Link
+              href="/reset-password"
+              className="text-xs font-medium text-brand-600 underline-offset-2 hover:underline"
+            >
+              Forgot password?
+            </Link>
+          }
+        >
           {(props) => <PasswordInput {...props} name="password" autoComplete="current-password" required />}
         </Field>
 
-        <div className="flex justify-end">
-          <Link href="/reset-password" className="text-xs font-medium text-brand-600 hover:underline">
-            Forgot password?
-          </Link>
-        </div>
-
-        <Button type="submit" size="lg" className="w-full" disabled={pending}>
+        <Button type="submit" size="lg" className="mt-2 h-12 w-full text-[0.9375rem]" disabled={pending}>
           {pending ? 'Signing in…' : 'Sign in'}
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-ink-500">
-        New to Bank Seal?{' '}
-        <Link href="/sign-up" className="font-medium text-brand-600 hover:underline">
+      <p className="mt-6 border-t border-border-subtle pt-5 text-center text-sm text-ink-500">
+        New to {siteConfig.name}?{' '}
+        <Link href="/sign-up" className="font-semibold text-brand-600 underline-offset-2 hover:underline">
           Create an account
         </Link>
       </p>

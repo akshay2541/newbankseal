@@ -267,3 +267,91 @@
     transform: translate(-50%, -50%);
   }
 }
+
+/* Homepage coverage map: Leaflet's own pins and popups, wearing our design tokens.
+   Unlayered and written at a specificity above Leaflet's own rules, because its
+   stylesheet is imported after this file and is unlayered too — a tie would go to it. */
+/* No tile layer, so Leaflet's default grey fill would show as a hard rectangle behind
+   the country. The page ground shows through instead. */
+.leaflet-container.bs-map {
+  background: transparent;
+  font-family: inherit;
+  outline: none;
+}
+
+.leaflet-marker-icon.bs-pin {
+  background: none;
+  border: 0;
+  /* Widens the hit area beyond the 15x20 glyph without moving it. The size comes
+     from the component, which spaces pins by the same number — anything larger
+     would reach past a neighbour's centre and swallow taps meant for it. */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--bs-pin-hit, 1.5rem);
+    height: var(--bs-pin-hit, 1.5rem);
+    transform: translate(-50%, -50%);
+  }
+  & svg {
+    transition: transform 150ms ease-out;
+    /* Grows from the tip, so the pin keeps pointing at the same coordinate. */
+    transform-origin: 50% 100%;
+    filter: drop-shadow(0 1px 1px rgb(16 24 40 / 0.2));
+  }
+  &:hover svg,
+  &:focus-visible svg {
+    transform: scale(1.1);
+  }
+}
+
+.bs-pin .bs-pin-body {
+  fill: var(--color-brand-600);
+}
+
+/* Set by the component on popupopen — Leaflet flags nothing on the marker itself. */
+.bs-pin.is-open .bs-pin-body {
+  fill: var(--color-brand-700);
+}
+
+.leaflet-popup.bs-popup .leaflet-popup-content-wrapper {
+  padding: 0;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-float);
+}
+
+.leaflet-popup.bs-popup .leaflet-popup-content {
+  margin: 0.625rem 0.875rem;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.leaflet-popup.bs-popup .leaflet-popup-content p {
+  margin: 0;
+}
+
+.leaflet-popup.bs-popup .leaflet-popup-tip {
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface);
+  box-shadow: none;
+}
+
+.bs-popup-city {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink-900);
+}
+
+.bs-popup-count {
+  margin-top: 0.125rem !important;
+  font-size: 0.75rem;
+  color: var(--color-ink-500);
+}
+
+.bs-popup-count strong {
+  font-weight: 500;
+  color: var(--color-brand-600);
+}

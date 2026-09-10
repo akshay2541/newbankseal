@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { BadgeCheck } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Field } from '@/components/ui/field';
@@ -70,16 +71,22 @@ export function SignUpForm() {
 
   return (
     <>
-      <header className="mb-8">
-        <h1 className="font-display text-2xl font-bold tracking-tight text-ink-900">Create your account</h1>
-        <p className="mt-2 text-sm text-ink-500">
-          Track auctions, save listings and express interest — free to join.
+      <header className="mb-7">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-success-soft px-2.5 py-1 text-2xs font-semibold tracking-wide text-success-500 uppercase">
+          <BadgeCheck className="size-3" aria-hidden="true" />
+          Free to join
+        </span>
+        <h1 className="mt-3.5 font-display text-[1.75rem] leading-tight font-bold tracking-tight text-ink-900">
+          Create your account
+        </h1>
+        <p className="mt-2 text-sm leading-relaxed text-ink-500">
+          Track auctions, save listings and express interest on verified bank-seized assets.
         </p>
       </header>
 
       <FormAlert message={formError} />
 
-      <form onSubmit={onSubmit} noValidate className="space-y-4">
+      <form onSubmit={onSubmit} noValidate className="space-y-5">
         <Field label="Full name" error={fieldErrors.fullName?.[0]} required>
           {(props) => (
             <Input {...props} name="fullName" autoComplete="name" maxLength={120} placeholder="Akshay Solanki" required />
@@ -146,14 +153,14 @@ export function SignUpForm() {
 
         <Checkbox name="marketingOptIn" label="Email me new listings that match my interests." />
 
-        <Button type="submit" size="lg" className="w-full" disabled={pending}>
+        <Button type="submit" size="lg" className="mt-1 h-12 w-full text-[0.9375rem]" disabled={pending}>
           {pending ? 'Creating account…' : 'Create account'}
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-ink-500">
+      <p className="mt-6 border-t border-border-subtle pt-5 text-center text-sm text-ink-500">
         Already have an account?{' '}
-        <Link href="/sign-in" className="font-medium text-brand-600 hover:underline">
+        <Link href="/sign-in" className="font-semibold text-brand-600 underline-offset-2 hover:underline">
           Sign in
         </Link>
       </p>
@@ -172,7 +179,9 @@ function Checkbox({
 }) {
   return (
     <div>
-      <label className="flex cursor-pointer items-start gap-2.5">
+      {/* Padded rather than bare, so the tap area reaches the comfortable minimum
+          without the 16px box growing into something that reads as a button. */}
+      <label className="flex cursor-pointer items-start gap-2.5 rounded-btn py-1.5 transition-colors hover:bg-ink-50">
         <input
           type="checkbox"
           name={name}
