@@ -29,24 +29,35 @@ export function InviteSection() {
     <section className="relative isolate mt-16 overflow-hidden pb-16" aria-labelledby="invite-heading">
       {/*
         Skyline backdrop. The source photograph is a colour sunset; the design wants a
-        grey haze, so it is desaturated here rather than in the asset — the file stays
-        reusable and the treatment lives with the rest of the styling.
+        grey haze rising into dark silhouettes, so it is desaturated and re-graded here
+        rather than in the asset — the file stays reusable and the treatment lives with
+        the rest of the styling.
 
-        The mask fades the image out towards the top so it dissolves into the page
-        instead of ending on a hard edge.
+        Every number below is measured against the design, and they only work together.
 
-        Two numbers below work together and neither survives alone. The box is a wide
-        1440:350 strip so the skyline occupies only the lower third of the section, as
-        in the design. But this photograph keeps its crisp building silhouettes in the
-        middle 40-70% of the frame and flat haze below that, so a strip anchored to the
-        bottom would show nothing but fog — hence `object-[center_66%]`, which slides
-        the crop window up onto the rooflines. Shorten the box and you must raise that
-        percentage with it. No brightness lift either: it washes silhouettes into haze.
-        Re-measure the frame if the asset is ever swapped.
+        The box is a 1440:720 strip, which at the design width puts its top level with
+        the map's midpoint. That height is the whole effect: the photograph's sky is what
+        becomes the pale haze behind the map, and a shorter strip crops the sky away and
+        leaves the skyline sitting on the page as a band.
 
-        `min-h-56` is the mobile floor. The strip's height derives from its width, so on
-        a narrow screen it would collapse to under a tenth of a section that has grown
-        taller as the content stacked, and the skyline would all but vanish.
+        `object-top` then falls out of the arithmetic rather than being taste. At this
+        aspect, cover scales the photo to 1440x959 and hides 239px of it; anchoring the
+        top lands the tallest spire 359px down, which is where the design puts it. Change
+        the strip's height and this has to be re-derived, not nudged.
+
+        The grade is nearly transparent by design. The photograph already has the shape
+        the section wants — a soft gradient sky, banded fog, silhouettes at three depths
+        — so it is desaturated and left almost alone. Pushing contrast is the tempting
+        mistake: it crushes the fog bands to white and the buildings to a flat cutout,
+        and the depth that makes this read as haze rather than as a pasted-on band goes
+        with them. Opacity does the blending instead, high enough that the mid-tones
+        survive.
+
+        Below `lg` the strip is measured against the section instead of its own width.
+        A width-derived height is right on the design's canvas and nowhere else: as the
+        column narrows the strip shrinks while the section grows taller with the stacked
+        content, and by phone width the skyline is a sliver along the bottom edge that
+        reads as a mistake. A percentage keeps the same proportion at every size.
 
         Layered by source order, not a negative z-index. An `opacity` and a `filter`
         each promote this to its own compositing layer, and at a negative index that
@@ -55,14 +66,14 @@ export function InviteSection() {
       */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 aspect-1440/350 min-h-56 w-full [mask-image:linear-gradient(to_bottom,transparent_0%,black_22%)]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%] min-h-80 w-full [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%)] lg:h-auto lg:aspect-1440/720"
       >
         <Image
           src="/images/city-skyline.jpg"
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-[center_66%] opacity-45 grayscale contrast-[1.25]"
+          className="object-cover object-top opacity-90 grayscale contrast-[1.08]"
         />
       </div>
 
